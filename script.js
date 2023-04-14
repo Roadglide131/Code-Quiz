@@ -45,3 +45,11 @@ var questions = [
     correctAnswerIndex: 2,
   },
 ];
+var time = 60; //in seconds -10 seconds if the user answer incorrectly
+var score = 0; // +10 if the user answered correctly
+var quizz_container = document.getElementById("quiz_value");
+var start_button = document.getElementById("start_button");
+var time_display = document.getElementById("time_left");
+var currentQuestionIndex = 0;
+var choices_display = document.querySelectorAll("#choices button");
+var question_display = document.getElementById("question");
