@@ -83,3 +83,38 @@ function updateTimer() {
     updateTimer = null;
   }
 }
+
+function nextQuestion() {
+  if (currentQuestionIndex + 1 <= questions.length) {
+    question_display.textContent = questions[currentQuestionIndex].question;
+    for (let i = 0; i < choices_display.length; i++) {
+      choices_display[i].textContent =
+        questions[currentQuestionIndex].choices[i];
+      choices_display[i].onclick = function ans() {
+        checkAnswer(i);
+      };
+    }
+  } else {
+    endQuiz();
+  }
+}
+
+function endQuiz() {
+  clearInterval(updateTimer);
+  updateTimer = null;
+  question_display.textContent = `You scored ${score} out of ${questions.length}!`;
+  time_display.style.display = "none";
+  start_button.style.display = "block";
+  for (let i = 0; i < choices_display.length; i++) {
+    choices_display[i].style.display = "none";
+  }
+}
+function checkAnswer(answer_index) {
+  if (answer_index === questions[currentQuestionIndex].correctAnswerIndex) {
+    score++;
+  } else {
+    time -= 10;
+  }
+  currentQuestionIndex++;
+  nextQuestion();
+}
