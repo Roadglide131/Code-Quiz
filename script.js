@@ -53,3 +53,33 @@ var time_display = document.getElementById("time_left");
 var currentQuestionIndex = 0;
 var choices_display = document.querySelectorAll("#choices button");
 var question_display = document.getElementById("question");
+
+function startQuiz() {
+  start_button.style.display = "none";
+  time_display.style.display = "block";
+  time = 60;
+  score = 0;
+  currentQuestionIndex = 0;
+  for (let i = 0; i < choices_display.length; i++) {
+    choices_display[i].style.display = "block";
+  }
+  nextQuestion();
+  setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+  if (time >= 0) {
+    time--;
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    time_display.innerHTML = `${minutes}:${seconds}`;
+  } else {
+    endQuiz();
+    clearInterval(updateTimer);
+    updateTimer = null;
+  }
+}
