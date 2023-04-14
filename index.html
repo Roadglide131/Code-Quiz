@@ -13,4 +13,32 @@
       crossorigin="anonymous"
     />
   </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col text-center">
+          <button
+            class="btn btn-primary"
+            onclick="startQuiz();"
+            id="start_button"
+          >
+            Start quizz
+          </button>
+          <div id="quiz_value">
+            <h1 id="time_left">1:00</h1>
+            <p id="question"></p>
+            <div id="choices" class="d-grid gap-2">
+              <button class="btn btn-secondary"></button>
+              <button class="btn btn-secondary"></button>
+              <button class="btn btn-secondary"></button>
+            </div>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
